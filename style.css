@@ -1,0 +1,311 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container {
+    font-family: 'Space Grotesk', sans-serif;
+    color: black;
+    padding: 12px;
+    background-color: #1B191C;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -1px;
+}
+
+.text {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+}
+
+.container_block {
+    padding: 40px;
+}
+
+.page_header {
+    background-color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.header_description {
+    max-width: 492px;
+}
+
+.header_title {
+    margin-bottom: 24px;
+}
+
+.header_audio {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+}
+
+.header_text {
+    color: #1B191C;
+    margin-bottom: 182px;
+}
+
+.header-info  {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+}
+
+.header-info_terms {
+    font-weight: 300;
+}
+
+.page_how {
+    display: flex;
+    gap: 36px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.how_description {
+    color: #EEEEEE;
+    width: 50%;
+}
+
+.how_img {
+    width: 628px;
+    height: 272px;
+    background-image: url('assets/illustration.svg');
+    background-repeat: no-repeat;
+}
+
+.description_title {
+    margin-bottom: 40px;
+}
+
+.page_techReq {
+    padding-bottom: 120px;
+}
+
+.techReq_title, label {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+    color: #F5F6F7;
+}
+
+.techReq_title {
+    margin-bottom: 40px;
+}
+
+.tabs > input[type="radio"] {
+    display: none;
+}
+
+.tab_content {
+    margin-top: 44px;
+    display: none;
+}
+
+#own_server_tab:checked ~ #tabs_block_own_server,
+#amazon_instance_tab:checked ~ #tabs_block_amazon_instance,
+#tab-btn-3:checked~#content-3 {
+    display: block;
+}
+
+#own_server_tab:checked~.own_server_tab_label,
+#amazon_instance_tab:checked~.amazon_instance_tab_label {
+    color: #F5F6F7;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.tabs > label {
+    cursor: pointer;
+    color: #CFD3D6;
+}
+
+.own_server_tab_label {
+    margin-right: 16px;
+}
+
+.tabs_block-content {
+    display: flex;
+    gap: 56px;
+}
+
+.tabs_column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.column_item {
+    display: flex;
+    border-bottom: 1px solid rgba(207, 211, 214, 0.1);
+    color: #EEEEEE;
+    padding-bottom: 12px;
+}
+
+.item_label {
+    width: 38%;
+}
+
+.item_value {
+    width: 62%;
+}
+
+@media (max-width: 1420px) {
+    .page_how {
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .how_description {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .header_audio {
+        position: static;
+        margin-bottom: 40px;
+    }
+
+    .header_text {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 740px) {
+    .how_img {
+        background-image: url('assets/mini_illustration.svg');
+        height: 180px;
+        width: 283px;
+    }
+    
+    .title {
+        font-size: 36px;
+        line-height: 110%;
+        letter-spacing: -0.4px;
+    }
+
+    .tabs_block-content {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .tabs_column {
+        width: 100%;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 560px) {
+    .column_item {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding: 0;
+    }
+
+    .container_block {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .item_label {
+        width: 100%;
+    }
+    
+    .item_value {
+        width: 100%;
+    }
+
+    .amazon_instance_tab_label {
+        display: inline-block;
+        width: min-content;
+    }
+
+    .page_techReq {
+        padding-bottom: 40px;
+    }
+
+    .container_block {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}

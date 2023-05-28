@@ -2,23 +2,127 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Заголовок моей страницы</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- следующие 3 строки нужны для корректного отображения семантических элементов HTML5 в старых версиях Internet Explorer-->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+
+    <script src="scripts/rebuildBlocks.js"></script>
   </head>
 
-  <body>
-    <!-- Вот наш главный заголовок, который используется на всех страницах нашего веб-сайта -->
-
-    <header>
-      <h1>Заголовок</h1>
-    </header>
-
+  <body class="container">
+    <div class="container_block page_header">
+        <div class="header_title header_description title">
+            Play any audio sources directly in the browser!
+        </div>
+        <div class="header_audio">
+            <div class="audio_title">
+                Insert the link
+            </div>
+        </div>
+        <div class="header_text header_description text">
+            Without any restrictions for free
+        </div>
+        <div class="header-info header_description">
+            By uploading the audio file, you agree to our
+            <span class="header-info_terms">Terms of Service.</span>
+        </div>
+    </div>
+    <div class="container_block page_how">
+        <div class="how_description">
+            <div class="description_title title">
+                How It Works
+            </div>
+            <div class="description_body text">
+                Lorem Ipsum is a "fish" text often used in print and web design. Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century. At that time, an unnamed printer created a large collection of font sizes and shapes, using Lorem Ipsum for print samples.
+            </div>
+        </div>
+        <div class="how_img"></div>
+    </div>
+    <div class="container_block page_techReq">
+        <div class="techReq_title">
+            Technical requirements
+        </div>
+        <div class="techReq_tabs">
+            <div class="tabs">
+                <input type="radio" name="tab-btn" id="own_server_tab" checked>
+                <label for="own_server_tab" class="own_server_tab_label">Own server</label>
+                <input type="radio" name="tab-btn" id="amazon_instance_tab">
+                <label for="amazon_instance_tab" class="amazon_instance_tab_label">Amazon Instance</label>
+            
+                <div class="tab_content" id="tabs_block_own_server">
+                    <div class="tabs_block-content">
+                        <div class="tabs_column">
+                            <div class="column_item">
+                                <span class="item_label text">OS + apps</span>
+                                <span class="item_value text">Unix/OSX + docker + nvidia-docker</span>
+                                <span></span>
+                            </div>
+                            <div class="column_item">
+                                <span class="item_label text">CPU</span>
+                                <span class="item_value text">4 cores or more (e.g. intel core i5)</span>
+                                <span></span>
+                            </div>
+                            <div class="column_item">
+                                <span class="item_label text">Memory</span>
+                                <span class="item_value text">16 GB RAM</span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="tabs_column">
+                            <div class="column_item">
+                                <span class="item_label text">Free space</span>
+                                <span class="item_value text">100 GB of free space</span>
+                                <span></span>
+                            </div>
+                            <div class="column_item">
+                                <span class="item_label text">Graphics hardware</span>
+                                <span class="item_value text">GPU: NVidia only 2Gb+</span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab_content" id="tabs_block_amazon_instance">
+                    <div class="tabs_block-content">
+                        <div class="tabs_column">
+                            <div class="column_item">
+                                <span class="item_label text">Instance</span>
+                                <span class="item_value text">g4dn.xlarge</span>
+                                <span></span>
+                            </div>
+                            <div class="column_item">
+                                <span class="item_label text">GPU</span>
+                                <span class="item_value text">1</span>
+                                <span></span>
+                            </div>
+                            <div class="column_item">
+                                <span class="item_label text">vCPUs</span>
+                                <span class="item_value text">4</span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="tabs_column">
+                            <div class="column_item">
+                                <span class="item_label text">Memory</span>
+                                <span class="item_value text">16 GB RAM</span>
+                                <span></span>
+                            </div>
+                            <div class="column_item">
+                                <span class="item_label text">Storage</span>
+                                <span class="item_value text">125 GB</span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
