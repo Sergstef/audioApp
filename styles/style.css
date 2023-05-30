@@ -104,12 +104,6 @@ select {
     max-width: 492px;
 }
 
-.header_audio {
-    position: absolute;
-    top: 171px;
-    left: 644px;
-}
-
 .header_text {
     color: #1B191C;
     margin-bottom: 182px;

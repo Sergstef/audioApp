@@ -10,13 +10,18 @@
 }
 
 @media (max-width: 1320px) {
-    .header_audio {
+    .page_header {
+        height: auto !important;
+    }
+
+    .header_player {
         position: static;
         margin-bottom: 40px;
     }
 
-    .header_text {
-        margin-bottom: 12px;
+    .video_player {
+        width: 296px;
+        height: 166px;
     }
 }
 
@@ -54,12 +59,16 @@
         background-image: url('../assets/mini_arrow.svg');
     }
     
-    .audio_player {
+    .player_display {
         width: 296px;
     }
 
     .player_sound {
         width: 191px;
+    }
+
+    .header_text {
+        margin-bottom: 18px;
     }
 }
 

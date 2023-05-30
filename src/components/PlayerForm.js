@@ -1,6 +1,6 @@
 const React = require('react');
 
-const AudioForm = ({ inputValue, setInputValue, onSubmit, isError }) => {
+const PlayerForm = ({ inputValue, setInputValue, onSubmit, isError }) => {
     return <div>
 			<div className='audio_title'>
                 Insert the link
@@ -16,4 +16,4 @@ const AudioForm = ({ inputValue, setInputValue, onSubmit, isError }) => {
 		</div>;
 }
 
-module.exports = AudioForm;
+module.exports = PlayerForm;

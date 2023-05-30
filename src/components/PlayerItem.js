@@ -4,7 +4,7 @@ const PlayerButton = require('./PlayerButton/PlayerButton');
 const PlayerProgress = require('./PlayerProgress/PlayerProgress');
 const PlayerBottom = require('./PlayerBottom/PlayerBottom');
 
-const AudioItem = ({ inputValue, setIsSubmitted }) => {
+const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const audioRef = React.useRef();
     const progressBarRef = React.useRef();
     const playAnimationRef = React.useRef();
@@ -53,17 +53,21 @@ const AudioItem = ({ inputValue, setIsSubmitted }) => {
         setIsPlaying((prev) => !prev);
     };
 
-    return <div>
-        <div onClick={() => setIsSubmitted(false)} className='audio_back'></div>
-        <div className='audio_player'>
-            <div className="player_loading">
+    const onLoadedMetadata = () => {
+        const seconds = audioRef.current.duration;
+        setDuration(seconds);
+        progressBarRef.current.max = seconds;
+    };
 
-            </div>
+    return <div>
+        <div onClick={() => setIsSubmitted(false)} className='player_back'></div>
+        {isVideo && <video ref={audioRef} src={inputValue} onLoadedMetadata={onLoadedMetadata} className='video_player' />}
+        <div className='player_display'>
             <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    
-            <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} setDuration={setDuration} inputValue={inputValue} />
+            <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} inputValue={inputValue} isVideo={isVideo} onLoadedMetadata={onLoadedMetadata} />
             <PlayerBottom timeProgress={timeProgress} volume={volume} setVolume={setVolume} />
         </div>
     </div>;
 }
 
-module.exports = AudioItem;
+module.exports = PlayerItem;
