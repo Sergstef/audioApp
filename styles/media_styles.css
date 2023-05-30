@@ -48,12 +48,17 @@
         gap: 12px;
     }
 
-    .audio_input, .audio_input-error {
+    .player_input, .player_input-error {
         width: 232px;
         height: 64px;
     }
+
+    .player_history {
+        width: 232px;
+        top: 65px;
+    }
     
-    .audio_submit {
+    .player_submit {
         width: 64px;
         height: 64px;
         background-image: url('../assets/mini_arrow.svg');

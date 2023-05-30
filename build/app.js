@@ -33998,6 +33998,14 @@ const App = () => {
 			checkIsVideo();
 			setIsSubmitted(true);
 			setIsError(false);
+
+			if (localStorage.history) {
+				const history = JSON.parse(localStorage.history);
+				history.push(inputValue);
+				localStorage.history = JSON.stringify(history);
+			} else {
+				localStorage.history = JSON.stringify([inputValue]);
+			}
 		} else {
 			setIsError(true);
 		}
@@ -34006,7 +34014,8 @@ const App = () => {
 	return React.createElement(
 		'div',
 		{ className: 'header_player', style: { top: isVideo ? 40 : 171 } },
-		!isSubmitted && React.createElement(PlayerForm, { inputValue: inputValue, setInputValue: setInputValue, onSubmit: onSubmit, isError: isError }),
+		!isSubmitted && React.createElement(PlayerForm, { inputValue: inputValue, setInputValue: setInputValue, onSubmit: onSubmit,
+			isError: isError, setIsError: setIsError }),
 		isSubmitted && React.createElement(PlayerItem, { inputValue: inputValue, setIsSubmitted: setIsSubmitted, isVideo: isVideo })
 	);
 };
@@ -34073,20 +34082,35 @@ module.exports = PlayerButton;
 const React = require('react');
 
 const PlayerForm = ({ inputValue, setInputValue, onSubmit, isError }) => {
+    const [isHistory, setIsHistory] = React.useState(false);
+
+    const getIsHistory = () => setIsHistory(!isError && localStorage.history);
+
     return React.createElement(
         'div',
         null,
         React.createElement(
             'div',
-            { className: 'audio_title' },
+            { className: 'player_title' },
             'Insert the link'
         ),
         React.createElement(
             'div',
-            { className: 'audio_form' },
-            React.createElement('input', { value: inputValue, onChange: e => setInputValue(e.target.value), type: 'text',
-                className: isError ? 'audio_input-error' : 'audio_input', placeholder: 'https://' }),
-            React.createElement('button', { onClick: onSubmit, className: 'audio_submit' })
+            { className: 'player_form' },
+            React.createElement('input', { onFocus: getIsHistory, onBlur: () => setIsHistory(false),
+                value: inputValue, onChange: e => setInputValue(e.target.value), type: 'text', id: 'player_input',
+                className: isError ? 'player_input-error' : 'player_input', placeholder: 'https://' }),
+            React.createElement('button', { onClick: onSubmit, className: 'player_submit' }),
+            isHistory && React.createElement(
+                'div',
+                { className: 'player_history' },
+                JSON.parse(localStorage.history).map((el, i) => React.createElement(
+                    'div',
+                    { className: 'history_item',
+                        key: i, title: el },
+                    el
+                ))
+            )
         ),
         isError && React.createElement(
             'div',
@@ -34189,7 +34213,7 @@ const PlayerProgress = ({ audioRef, progressBarRef, inputValue, isVideo, onLoade
     const handleProgressChange = () => {
         audioRef.current.currentTime = progressBarRef.current.value;
     };
-    console.log(audioRef);
+
     return React.createElement(
         "div",
         { className: "player_progress" },

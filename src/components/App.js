@@ -31,13 +31,22 @@ const App = () => {
 			checkIsVideo();
 			setIsSubmitted(true);
 			setIsError(false);
+
+			if (localStorage.history) {
+				const history = JSON.parse(localStorage.history);
+				history.push(inputValue);
+				localStorage.history = JSON.stringify(history);
+			} else {
+				localStorage.history = JSON.stringify([inputValue]);
+			}
 		} else {
 			setIsError(true);
 		}
 	}
 
     return <div className="header_player" style={{ top: isVideo ? 40 : 171 }}>
-			{!isSubmitted && <PlayerForm inputValue={inputValue} setInputValue={setInputValue} onSubmit={onSubmit} isError={isError} />}
+			{!isSubmitted && <PlayerForm inputValue={inputValue} setInputValue={setInputValue} onSubmit={onSubmit}
+				 isError={isError} setIsError={setIsError} />}
 			{isSubmitted && <PlayerItem inputValue={inputValue} setIsSubmitted={setIsSubmitted} isVideo={isVideo} />}
 			{/* <AudioItem inputValue={'https://ts01.flac.pw/mp3/13085.mp3'} setIsSubmitted={setIsSubmitted} /> */}
 		</div>;
