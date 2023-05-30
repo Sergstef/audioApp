@@ -12,6 +12,7 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const [timeProgress, setTimeProgress] = React.useState(0);
     const [duration, setDuration] = React.useState(0);
     const [volume, setVolume] = React.useState(60);
+    const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
         if (audioRef) {
@@ -61,11 +62,16 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
 
     return <div>
         <div onClick={() => setIsSubmitted(false)} className='player_back'></div>
-        {isVideo && <video ref={audioRef} src={inputValue} onLoadedMetadata={onLoadedMetadata} className='video_player' />}
+        {isVideo && <video ref={audioRef} src={inputValue} onLoadedMetadata={onLoadedMetadata} className='video_player'
+             onWaiting={() => setLoading(true)} onPause={() => setLoading(false)} onPlaying={() => setLoading(false)} />}
         <div className='player_display'>
-            <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    
-            <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} inputValue={inputValue} isVideo={isVideo} onLoadedMetadata={onLoadedMetadata} />
-            <PlayerBottom timeProgress={timeProgress} volume={volume} setVolume={setVolume} />
+            {loading && <span class="player_loader" />}
+            <div className='display_content'>
+                <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    
+                <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} inputValue={inputValue} isVideo={isVideo}
+                     onLoadedMetadata={onLoadedMetadata} setLoading={setLoading} />
+                <PlayerBottom timeProgress={timeProgress} volume={volume} setVolume={setVolume} />
+            </div>
         </div>
     </div>;
 }
