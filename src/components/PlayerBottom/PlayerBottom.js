@@ -1,6 +1,14 @@
 const React = require('react');
 
 const PlayerBottom = ({ timeProgress, volume, setVolume }) => {
+    const soundBarRef = React.useRef();
+
+    React.useEffect(() => {
+        soundBarRef.current.style.setProperty(
+            '--range-progress',
+            `${volume}%`
+          );
+    }, [volume])
 
     const formatTime = (time) => {
         if (time && !isNaN(time)) {
@@ -20,7 +28,7 @@ const PlayerBottom = ({ timeProgress, volume, setVolume }) => {
             <span className="time_current">{formatTime(timeProgress)}</span>
         </div>
         <div className="player_sound">
-            <input type="range" min={0} max={100} value={volume} onChange={(e) => setVolume(e.target.value)} />
+            <input ref={soundBarRef} type="range" min={0} max={100} value={volume} onChange={(e) => setVolume(e.target.value)} />
         </div>
     </div>;
 }

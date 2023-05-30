@@ -56,7 +56,7 @@ const AudioItem = ({ inputValue, setIsSubmitted }) => {
     return <div>
         <div onClick={() => setIsSubmitted(false)} className='audio_back'></div>
         <div className='audio_player'>
-            <div className="player_animation">
+            <div className="player_loading">
 
             </div>
             <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    

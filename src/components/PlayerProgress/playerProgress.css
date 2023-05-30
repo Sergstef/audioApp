@@ -5,12 +5,3 @@
 .player_progress input {
     width: 100%;
 }
-
-.input[type="range"] {
-    --range-progress: 0;
-}
-  
-input[type="range"]::before {
-    background: black;
-    width: var(--range-progress);
-}

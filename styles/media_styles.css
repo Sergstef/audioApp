@@ -43,7 +43,7 @@
         gap: 12px;
     }
 
-    .audio_input {
+    .audio_input, .audio_input-error {
         width: 232px;
         height: 64px;
     }

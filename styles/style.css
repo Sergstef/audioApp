@@ -104,59 +104,10 @@ select {
     max-width: 492px;
 }
 
-.audioForm {
-    display: flex;
-}
-
-.audio_input {
-    padding-left: 16px;
-    font-size: 24px;
-    border: none;
-    outline: none;
-    width: 524px;
-    height: 96px;
-}
-
-.audio_submit {
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-    width: 96px;
-    height: 96px;
-    background-color: #F8D231;
-    background-image: url('../assets/arrow.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .header_audio {
     position: absolute;
     top: 171px;
     left: 644px;
-}
-
-.audio_title {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.audio_back {
-    width: 79px;
-    height: 18px;
-    cursor: pointer;
-    background-image: url('../assets/back.svg');
-    background-repeat: no-repeat;
-    margin-bottom: 20px;
-}
-
-.audio_player {
-    width: 620px;
-    height: 198px;
-    background-color: #CFD3D6;
-    padding: 20px 20px 22px 20px;
 }
 
 .header_text {
