@@ -1,0 +1,104 @@
+@media (max-width: 1420px) {
+    .page_how {
+        flex-direction: column;
+        padding-top: 40px;
+    }
+    
+    .how_description {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1320px) {
+    .header_audio {
+        position: static;
+        margin-bottom: 40px;
+    }
+
+    .header_text {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 740px) {
+    .how_img {
+        background-image: url('../assets/mini_illustration.svg');
+        height: 180px;
+        width: 283px;
+    }
+    
+    .title {
+        font-size: 36px;
+        line-height: 110%;
+        letter-spacing: -0.4px;
+    }
+
+    .tabs_block-content {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .tabs_column {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .audio_input {
+        width: 232px;
+        height: 64px;
+    }
+    
+    .audio_submit {
+        width: 64px;
+        height: 64px;
+        background-image: url('../assets/mini_arrow.svg');
+    }
+    
+    .audio_player {
+        width: 296px;
+    }
+
+    .player_sound {
+        width: 191px;
+    }
+}
+
+@media (max-width: 560px) {
+    .column_item {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding: 0;
+    }
+
+    .container_block {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .item_label {
+        width: 100%;
+    }
+    
+    .item_value {
+        width: 100%;
+    }
+
+    .amazon_instance_tab_label {
+        display: inline-block;
+        width: min-content;
+    }
+
+    .page_techReq {
+        padding-bottom: 40px;
+    }
+
+    .container_block {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}

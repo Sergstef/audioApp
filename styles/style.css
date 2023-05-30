@@ -99,12 +99,9 @@ select {
     position: relative;
 }
 
-.header_description {
-    max-width: 492px;
-}
-
 .header_title {
     margin-bottom: 24px;
+    max-width: 492px;
 }
 
 .audioForm {
@@ -130,7 +127,7 @@ select {
     width: 96px;
     height: 96px;
     background-color: #F8D231;
-    background-image: url('assets/arrow.svg');
+    background-image: url('../assets/arrow.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -150,7 +147,7 @@ select {
     width: 79px;
     height: 18px;
     cursor: pointer;
-    background-image: url('assets/back.svg');
+    background-image: url('../assets/back.svg');
     background-repeat: no-repeat;
     margin-bottom: 20px;
 }
@@ -162,57 +159,10 @@ select {
     padding: 20px 20px 22px 20px;
 }
 
-.player_button {
-    cursor: pointer;
-    margin-bottom: 50px;
-}
-
-.player_button img {
-    width: 40px;
-    height: 40px;
-}
-
-.player_progress {
-    margin-bottom: 35px;
-}
-
-.player_progress input {
-    width: 100%;
-}
-
-input[type="range"] {
-    --range-progress: 0;
-    /* ... */
-}
-  
-input[type="range"]::before {
-    background: black;
-    width: var(--range-progress);
-}
-
-.player_bottom {
-    display: flex;
-    justify-content: space-between;
-}
-
-.player_time {
-    display: flex;
-    align-items: center;
-}
-
-.player_sound {
-    display: flex;
-    align-items: center;
-    width: 252px;
-}
-
-.player_sound input {
-    width: 100%;
-}
-
 .header_text {
     color: #1B191C;
     margin-bottom: 182px;
+    max-width: 492px;
 }
 
 .header-info  {
@@ -220,6 +170,7 @@ input[type="range"]::before {
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.3px;
+    max-width: 492px;
 }
 
 .header-info_terms {
@@ -241,7 +192,7 @@ input[type="range"]::before {
 .how_img {
     width: 628px;
     height: 272px;
-    background-image: url('assets/illustration.svg');
+    background-image: url('../assets/illustration.svg');
     background-repeat: no-repeat;
 }
 
@@ -319,109 +270,4 @@ input[type="range"]::before {
 
 .item_value {
     width: 62%;
-}
-
-@media (max-width: 1420px) {
-    .page_how {
-        flex-direction: column;
-        padding-top: 40px;
-    }
-    
-    .how_description {
-        width: 100%;
-    }
-}
-
-@media (max-width: 1320px) {
-    .header_audio {
-        position: static;
-        margin-bottom: 40px;
-    }
-
-    .header_text {
-        margin-bottom: 12px;
-    }
-}
-
-@media (max-width: 740px) {
-    .how_img {
-        background-image: url('assets/mini_illustration.svg');
-        height: 180px;
-        width: 283px;
-    }
-    
-    .title {
-        font-size: 36px;
-        line-height: 110%;
-        letter-spacing: -0.4px;
-    }
-
-    .tabs_block-content {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .tabs_column {
-        width: 100%;
-        gap: 12px;
-    }
-
-    .audio_input {
-        width: 232px;
-        height: 64px;
-    }
-    
-    .audio_submit {
-        width: 64px;
-        height: 64px;
-        background-image: url('assets/mini_arrow.svg');
-    }
-    
-    .audio_player {
-        width: 296px;
-    }
-
-    .player_sound {
-        width: 191px;
-    }
-}
-
-@media (max-width: 560px) {
-    .column_item {
-        flex-direction: column;
-        gap: 12px;
-    }
-}
-
-@media (max-width: 420px) {
-    .container {
-        padding: 0;
-    }
-
-    .container_block {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    .item_label {
-        width: 100%;
-    }
-    
-    .item_value {
-        width: 100%;
-    }
-
-    .amazon_instance_tab_label {
-        display: inline-block;
-        width: min-content;
-    }
-
-    .page_techReq {
-        padding-bottom: 40px;
-    }
-
-    .container_block {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
 }

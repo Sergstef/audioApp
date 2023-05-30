@@ -1,5 +1,9 @@
 const React = require('react');
 
+const PlayerButton = require('./PlayerButton/PlayerButton');
+const PlayerProgress = require('./PlayerProgress/PlayerProgress');
+const PlayerBottom = require('./PlayerBottom/PlayerBottom');
+
 const AudioItem = ({ inputValue, setIsSubmitted }) => {
     const audioRef = React.useRef();
     const progressBarRef = React.useRef();
@@ -49,52 +53,17 @@ const AudioItem = ({ inputValue, setIsSubmitted }) => {
         setIsPlaying((prev) => !prev);
     };
 
-    const handleProgressChange = () => {
-        audioRef.current.currentTime = progressBarRef.current.value;
-    };
-
-    const formatTime = (time) => {
-        if (time && !isNaN(time)) {
-          const minutes = Math.floor(time / 60);
-          const formatMinutes =
-            minutes < 10 ? `0${minutes}` : `${minutes}`;
-          const seconds = Math.floor(time % 60);
-          const formatSeconds =
-            seconds < 10 ? `0${seconds}` : `${seconds}`;
-          return `${formatMinutes}:${formatSeconds}`;
-        }
-        return '00:00';
-    };
-
-    const onLoadedMetadata = () => {
-        const seconds = audioRef.current.duration;
-        setDuration(seconds);
-        progressBarRef.current.max = seconds;
-      };
-
     return <div>
-			<div onClick={() => setIsSubmitted(false)} className='audio_back'></div>
-            <div className='audio_player'>
-                <div className="player_animation">
+        <div onClick={() => setIsSubmitted(false)} className='audio_back'></div>
+        <div className='audio_player'>
+            <div className="player_animation">
 
-                </div>
-                <div onClick={togglePlayPause} className="player_button">
-                    <img src={isPlaying ? 'assets/pause.svg' : 'assets/play.svg'} alt="" />
-                </div>
-                <div className="player_progress">
-                    <input type="range" ref={progressBarRef} defaultValue="0" onChange={handleProgressChange} />
-                    <audio ref={audioRef} src={inputValue} onLoadedMetadata={onLoadedMetadata} />
-                </div>
-                <div className="player_bottom">
-                    <div className="player_time">
-                        <span className="time current">{formatTime(timeProgress)}</span>
-                    </div>
-                    <div className="player_sound">
-                        <input type="range" min={0} max={100} value={volume} onChange={(e) => setVolume(e.target.value)} />
-                    </div>
-                </div>
             </div>
-		</div>;
+            <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    
+            <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} setDuration={setDuration} inputValue={inputValue} />
+            <PlayerBottom timeProgress={timeProgress} volume={volume} setVolume={setVolume} />
+        </div>
+    </div>;
 }
 
 module.exports = AudioItem;

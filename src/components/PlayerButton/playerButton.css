@@ -1,0 +1,9 @@
+.player_button {
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+.player_button img {
+    width: 40px;
+    height: 40px;
+}

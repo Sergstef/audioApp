@@ -6,7 +6,11 @@
 
     <title>Заголовок моей страницы</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="src/components/PlayerButton/playerButton.css">
+    <link rel="stylesheet" href="src/components/PlayerProgress/playerProgress.css">
+    <link rel="stylesheet" href="src/components/PlayerBottom/playerBottom.css">
+    <link rel="stylesheet" href="styles/media_styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,17 +20,17 @@
 
   <body class="container">
     <div class="container_block page_header">
-        <div class="header_title header_description title">
+        <div class="header_title title">
             Play any audio sources directly in the browser!
         </div>
         <div class="header_audio">
             <div id="app"></div>
 		    <script src="build/app.js"></script>
         </div>
-        <div class="header_text header_description text">
+        <div class="header_text text">
             Without any restrictions for free
         </div>
-        <div class="header-info header_description">
+        <div class="header-info">
             By uploading the audio file, you agree to our
             <span class="header-info_terms">Terms of Service.</span>
         </div>

@@ -1,0 +1,19 @@
+.player_bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player_time {
+    display: flex;
+    align-items: center;
+}
+
+.player_sound {
+    display: flex;
+    align-items: center;
+    width: 252px;
+}
+
+.player_sound input {
+    width: 100%;
+}

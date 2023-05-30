@@ -1,0 +1,16 @@
+.player_progress {
+    margin-bottom: 35px;
+}
+
+.player_progress input {
+    width: 100%;
+}
+
+.input[type="range"] {
+    --range-progress: 0;
+}
+  
+input[type="range"]::before {
+    background: black;
+    width: var(--range-progress);
+}
