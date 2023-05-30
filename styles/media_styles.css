@@ -68,8 +68,12 @@
         width: 296px;
     }
 
+    .display_main {
+        width: 204px;
+    }
+
     .player_sound {
-        width: 191px;
+        width: 139px;
     }
 
     .header_text {

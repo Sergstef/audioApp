@@ -209,7 +209,13 @@ input[type="range"]:focus::-moz-range-thumb{
 }
 
 .display_content {
+    display: flex;
+    gap: 20px;
     padding: 20px;
+}
+
+.display_main {
+    width: 528px;
 }
 
 .player_history {
@@ -237,6 +243,53 @@ input[type="range"]:focus::-moz-range-thumb{
 }
 
 .history_item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.display_extra {
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.extra_dots {
+    background-image: url('../../assets/dots.svg');
+    background-repeat: no-repeat;
+    position: relative;
+    width: 4px;
+    height: 18px;
+}
+
+.extra_speed {
+    position: absolute;
+    top: 21px;
+    right: -9px;
+    background-color: white;
+    width: 83px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.speed_item {
+    height: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.4px;
+}
+
+.speed_item span {
+    margin-left: 10px;
+}
+
+.speed_item:last-child {
     padding-bottom: 0;
     border-bottom: none;
 }

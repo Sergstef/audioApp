@@ -4,6 +4,8 @@ const PlayerButton = require('./PlayerButton/PlayerButton');
 const PlayerProgress = require('./PlayerProgress/PlayerProgress');
 const PlayerBottom = require('./PlayerBottom/PlayerBottom');
 
+const speedArr = [0.5, 1, 1.5];
+
 const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const audioRef = React.useRef();
     const progressBarRef = React.useRef();
@@ -13,12 +15,18 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const [duration, setDuration] = React.useState(0);
     const [volume, setVolume] = React.useState(60);
     const [loading, setLoading] = React.useState(false);
+    const [speedBlockOpened, setSpeedBlockOpened] = React.useState(false);
+    const [selectedSpeed, setSelectedSpeed] = React.useState(speedArr[1]);
+
+    React.useEffect(() => {
+        audioRef.current.playbackRate = selectedSpeed;
+    }, [selectedSpeed]);
 
     React.useEffect(() => {
         if (audioRef) {
           audioRef.current.volume = volume / 100;
         }
-      }, [volume, audioRef]);
+    }, [volume, audioRef]);
 
     React.useEffect(() => {
         if (isPlaying) {
@@ -64,7 +72,11 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         document.querySelector('.page_header').style.height = 'auto';
         document.querySelector('.header_text').style.marginBottom = '182px';
         setIsSubmitted(false);
-    }
+    };
+
+    const toggleSpeedBlock = () => {
+        setSpeedBlockOpened((prev) => !prev);
+    };
 
     return <div>
         <div onClick={getBack} className='player_back'></div>
@@ -73,10 +85,22 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         <div className='player_display'>
             {loading && <span class="player_loader" />}
             <div className='display_content'>
-                <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    
-                <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} inputValue={inputValue} isVideo={isVideo}
-                     onLoadedMetadata={onLoadedMetadata} setLoading={setLoading} />
-                <PlayerBottom timeProgress={timeProgress} volume={volume} setVolume={setVolume} />
+                <div className='display_main'>
+                    <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    
+                    <PlayerProgress audioRef={audioRef} progressBarRef={progressBarRef} inputValue={inputValue} isVideo={isVideo}
+                        onLoadedMetadata={onLoadedMetadata} setLoading={setLoading} />
+                    <PlayerBottom timeProgress={timeProgress} volume={volume} setVolume={setVolume} />
+                </div>
+                <div className='display_extra'>
+                    <div className='extra_dots' onClick={toggleSpeedBlock}>
+                        {speedBlockOpened && <div className='extra_speed'>
+                            {speedArr.map(el => <div style={{ color: selectedSpeed === el ? 'black' : '#A4A3A4' }}
+                                 className='speed_item' onClick={() => setSelectedSpeed(el)}>
+                                    <span>{el}</span>
+                            </div>)}
+                        </div>}
+                    </div>
+                </div>
             </div>
         </div>
     </div>;

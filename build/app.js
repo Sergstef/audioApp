@@ -34072,8 +34072,8 @@ const React = require('react');
 
 const PlayerButton = ({ togglePlayPause, isPlaying }) => React.createElement(
     'div',
-    { onClick: togglePlayPause, className: 'player_button' },
-    React.createElement('img', { src: isPlaying ? 'assets/pause.svg' : 'assets/play.svg', alt: '' })
+    { className: 'player_button' },
+    React.createElement('img', { onClick: togglePlayPause, src: isPlaying ? 'assets/pause.svg' : 'assets/play.svg', alt: '' })
 );
 
 module.exports = PlayerButton;
@@ -34129,6 +34129,8 @@ const PlayerButton = require('./PlayerButton/PlayerButton');
 const PlayerProgress = require('./PlayerProgress/PlayerProgress');
 const PlayerBottom = require('./PlayerBottom/PlayerBottom');
 
+const speedArr = [0.5, 1, 1.5];
+
 const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const audioRef = React.useRef();
     const progressBarRef = React.useRef();
@@ -34138,6 +34140,12 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const [duration, setDuration] = React.useState(0);
     const [volume, setVolume] = React.useState(60);
     const [loading, setLoading] = React.useState(false);
+    const [speedBlockOpened, setSpeedBlockOpened] = React.useState(false);
+    const [selectedSpeed, setSelectedSpeed] = React.useState(speedArr[1]);
+
+    React.useEffect(() => {
+        audioRef.current.playbackRate = selectedSpeed;
+    }, [selectedSpeed]);
 
     React.useEffect(() => {
         if (audioRef) {
@@ -34188,6 +34196,10 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         setIsSubmitted(false);
     };
 
+    const toggleSpeedBlock = () => {
+        setSpeedBlockOpened(prev => !prev);
+    };
+
     return React.createElement(
         'div',
         null,
@@ -34197,14 +34209,40 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         React.createElement(
             'div',
             { className: 'player_display' },
-            loading && React.createElement('span', { 'class': 'player_loader' }),
+            true && React.createElement('span', { 'class': 'player_loader' }),
             React.createElement(
                 'div',
                 { className: 'display_content' },
-                React.createElement(PlayerButton, { togglePlayPause: togglePlayPause, isPlaying: isPlaying }),
-                React.createElement(PlayerProgress, { audioRef: audioRef, progressBarRef: progressBarRef, inputValue: inputValue, isVideo: isVideo,
-                    onLoadedMetadata: onLoadedMetadata, setLoading: setLoading }),
-                React.createElement(PlayerBottom, { timeProgress: timeProgress, volume: volume, setVolume: setVolume })
+                React.createElement(
+                    'div',
+                    { className: 'display_main' },
+                    React.createElement(PlayerButton, { togglePlayPause: togglePlayPause, isPlaying: isPlaying }),
+                    React.createElement(PlayerProgress, { audioRef: audioRef, progressBarRef: progressBarRef, inputValue: inputValue, isVideo: isVideo,
+                        onLoadedMetadata: onLoadedMetadata, setLoading: setLoading }),
+                    React.createElement(PlayerBottom, { timeProgress: timeProgress, volume: volume, setVolume: setVolume })
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'display_extra' },
+                    React.createElement(
+                        'div',
+                        { className: 'extra_dots', onClick: toggleSpeedBlock },
+                        speedBlockOpened && React.createElement(
+                            'div',
+                            { className: 'extra_speed' },
+                            speedArr.map(el => React.createElement(
+                                'div',
+                                { style: { color: selectedSpeed === el ? 'black' : '#A4A3A4' },
+                                    className: 'speed_item', onClick: () => setSelectedSpeed(el) },
+                                React.createElement(
+                                    'span',
+                                    null,
+                                    el
+                                )
+                            ))
+                        )
+                    )
+                )
             )
         )
     );
