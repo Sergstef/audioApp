@@ -34209,7 +34209,7 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         React.createElement(
             'div',
             { className: 'player_display' },
-            true && React.createElement('span', { 'class': 'player_loader' }),
+            loading && React.createElement('span', { 'class': 'player_loader' }),
             React.createElement(
                 'div',
                 { className: 'display_content' },
