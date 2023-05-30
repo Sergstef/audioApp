@@ -60,8 +60,14 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         progressBarRef.current.max = seconds;
     };
 
+    const getBack = () => {
+        document.querySelector('.page_header').style.height = 'auto';
+        document.querySelector('.header_text').style.marginBottom = '182px';
+        setIsSubmitted(false);
+    }
+
     return <div>
-        <div onClick={() => setIsSubmitted(false)} className='player_back'></div>
+        <div onClick={getBack} className='player_back'></div>
         {isVideo && <video ref={audioRef} src={inputValue} onLoadedMetadata={onLoadedMetadata} className='video_player'
              onWaiting={() => setLoading(true)} onPause={() => setLoading(false)} onPlaying={() => setLoading(false)} />}
         <div className='player_display'>

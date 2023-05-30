@@ -48,7 +48,6 @@ const App = () => {
 			{!isSubmitted && <PlayerForm inputValue={inputValue} setInputValue={setInputValue} onSubmit={onSubmit}
 				 isError={isError} setIsError={setIsError} />}
 			{isSubmitted && <PlayerItem inputValue={inputValue} setIsSubmitted={setIsSubmitted} isVideo={isVideo} />}
-			{/* <AudioItem inputValue={'https://ts01.flac.pw/mp3/13085.mp3'} setIsSubmitted={setIsSubmitted} /> */}
 		</div>;
 }
 

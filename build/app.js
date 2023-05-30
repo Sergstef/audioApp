@@ -34182,10 +34182,16 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         progressBarRef.current.max = seconds;
     };
 
+    const getBack = () => {
+        document.querySelector('.page_header').style.height = 'auto';
+        document.querySelector('.header_text').style.marginBottom = '182px';
+        setIsSubmitted(false);
+    };
+
     return React.createElement(
         'div',
         null,
-        React.createElement('div', { onClick: () => setIsSubmitted(false), className: 'player_back' }),
+        React.createElement('div', { onClick: getBack, className: 'player_back' }),
         isVideo && React.createElement('video', { ref: audioRef, src: inputValue, onLoadedMetadata: onLoadedMetadata, className: 'video_player',
             onWaiting: () => setLoading(true), onPause: () => setLoading(false), onPlaying: () => setLoading(false) }),
         React.createElement(
