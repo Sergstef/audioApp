@@ -67,6 +67,74 @@ select {
   }
 }
 
+.body {
+    position: relative;
+}
+
+.warning {
+    position: absolute;
+    top: 20px;
+    left: 33%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 618px;
+    z-index: 100;
+    background-color: white;
+    animation: smoothAppearance 200ms linear;
+}
+
+@keyframes smoothAppearance {
+    0% {
+      top: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      top: 20px;
+      transform: translateY(0%);
+    }
+}
+
+.warning_content {
+    display: flex;
+    gap: 12px;
+}
+
+.warning_icon {
+    background-image: url('../assets/warning.svg');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
+.warning_text {
+    display: flex;
+    flex-direction: column;
+}
+
+.warning_title {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #1B191C;
+}
+
+.warning_desc {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.3px;
+    color: #1B191C;
+}
+
+.warning_close {
+    background-image: url('../assets/close.svg');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+}
+
 .container {
     font-family: 'Space Grotesk', sans-serif;
     color: black;

@@ -23,6 +23,14 @@
         width: 296px;
         height: 166px;
     }
+
+    .warning {
+        width: 296px;
+    }
+
+    .warning_text {
+        width: 100px;
+    }
 }
 
 @media (max-width: 740px) {
@@ -118,5 +126,9 @@
     .container_block {
         padding-top: 20px;
         padding-bottom: 20px;
+    }
+
+    .warning {
+        left: 4%;
     }
 }

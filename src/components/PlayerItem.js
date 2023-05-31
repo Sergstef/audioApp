@@ -83,7 +83,7 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         {isVideo && <video ref={audioRef} src={inputValue} onLoadedMetadata={onLoadedMetadata} className='video_player'
              onWaiting={() => setLoading(true)} onPause={() => setLoading(false)} onPlaying={() => setLoading(false)} />}
         <div className='player_display'>
-            {loading && <span class="player_loader" />}
+            {loading && <span className="player_loader" />}
             <div className='display_content'>
                 <div className='display_main'>
                     <PlayerButton togglePlayPause={togglePlayPause} isPlaying={isPlaying} />    

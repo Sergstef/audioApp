@@ -33975,6 +33975,7 @@ const App = () => {
 	const [isSubmitted, setIsSubmitted] = React.useState(false);
 	const [isError, setIsError] = React.useState(false);
 	const [isVideo, setIsVideo] = React.useState(false);
+	const [isWarningOpened, setIsWarningOpened] = React.useState(false);
 
 	React.useEffect(() => {
 		if (!isSubmitted) {
@@ -34007,16 +34008,70 @@ const App = () => {
 				localStorage.history = JSON.stringify([inputValue]);
 			}
 		} else {
+			console.log('aaa');
+			setIsWarningOpened(true);
 			setIsError(true);
 		}
 	};
 
 	return React.createElement(
 		'div',
-		{ className: 'header_player', style: { top: isVideo ? 40 : 171 } },
-		!isSubmitted && React.createElement(PlayerForm, { inputValue: inputValue, setInputValue: setInputValue, onSubmit: onSubmit,
-			isError: isError, setIsError: setIsError }),
-		isSubmitted && React.createElement(PlayerItem, { inputValue: inputValue, setIsSubmitted: setIsSubmitted, isVideo: isVideo })
+		null,
+		isWarningOpened && React.createElement(
+			'div',
+			{ className: 'warning' },
+			React.createElement(
+				'div',
+				{ className: 'warning_content' },
+				React.createElement('div', { className: 'warning_icon' }),
+				React.createElement(
+					'div',
+					{ className: 'warning_text' },
+					React.createElement(
+						'div',
+						{ className: 'warning_title' },
+						'Warning'
+					),
+					React.createElement(
+						'div',
+						{ className: 'warning_desc' },
+						'Invalid link. Please start link with \'https://\''
+					)
+				)
+			),
+			React.createElement('div', { onClick: () => setIsWarningOpened(false), className: 'warning_close' })
+		),
+		React.createElement(
+			'div',
+			{ className: 'container_block page_header' },
+			React.createElement(
+				'div',
+				{ className: 'header_title title' },
+				'Play any audio sources directly in the browser!'
+			),
+			React.createElement(
+				'div',
+				{ className: 'header_player', style: { top: isVideo ? 40 : 171 } },
+				!isSubmitted && React.createElement(PlayerForm, { inputValue: inputValue, setInputValue: setInputValue, onSubmit: onSubmit,
+					isError: isError, setIsError: setIsError }),
+				isSubmitted && React.createElement(PlayerItem, { inputValue: inputValue, setIsSubmitted: setIsSubmitted, isVideo: isVideo })
+			),
+			React.createElement(
+				'div',
+				{ className: 'header_text text' },
+				'Without any restrictions for free'
+			),
+			React.createElement(
+				'div',
+				{ className: 'header-info' },
+				'By uploading the audio file, you agree to our',
+				React.createElement(
+					'span',
+					{ className: 'header-info_terms' },
+					'Terms of Service.'
+				)
+			)
+		)
 	);
 };
 
@@ -34209,7 +34264,7 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         React.createElement(
             'div',
             { className: 'player_display' },
-            loading && React.createElement('span', { 'class': 'player_loader' }),
+            loading && React.createElement('span', { className: 'player_loader' }),
             React.createElement(
                 'div',
                 { className: 'display_content' },
