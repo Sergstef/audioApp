@@ -34008,7 +34008,6 @@ const App = () => {
 				localStorage.history = JSON.stringify([inputValue]);
 			}
 		} else {
-			console.log('aaa');
 			setIsWarningOpened(true);
 			setIsError(true);
 		}
@@ -34190,6 +34189,7 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const audioRef = React.useRef();
     const progressBarRef = React.useRef();
     const playAnimationRef = React.useRef();
+    const displayRef = React.useRef();
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [timeProgress, setTimeProgress] = React.useState(0);
     const [duration, setDuration] = React.useState(0);
@@ -34197,6 +34197,10 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
     const [loading, setLoading] = React.useState(false);
     const [speedBlockOpened, setSpeedBlockOpened] = React.useState(false);
     const [selectedSpeed, setSelectedSpeed] = React.useState(speedArr[1]);
+
+    React.useEffect(() => {
+        displayRef.current.focus();
+    }, []);
 
     React.useEffect(() => {
         audioRef.current.playbackRate = selectedSpeed;
@@ -34255,6 +34259,33 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         setSpeedBlockOpened(prev => !prev);
     };
 
+    const handleKeyDown = event => {
+        if (event.code === 'KeyQ') {
+            togglePlayPause();
+        }
+
+        if (event.code === 'ArrowLeft') {
+            audioRef.current.currentTime -= 2;
+            progressBarRef.current.value -= 2;
+        }
+
+        if (event.code === 'ArrowRight') {
+            audioRef.current.currentTime += 2;
+            const progress = parseInt(progressBarRef.current.value) + 2;
+            progressBarRef.current.value = progress;
+        }
+
+        if (event.code === 'ArrowUp') {
+            event.preventDefault();
+            setVolume(prev => prev + 3);
+        }
+
+        if (event.code === 'ArrowDown') {
+            event.preventDefault();
+            setVolume(prev => prev - 3);
+        }
+    };
+
     return React.createElement(
         'div',
         null,
@@ -34264,13 +34295,13 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         React.createElement(
             'div',
             { className: 'player_display' },
-            loading && React.createElement('span', { className: 'player_loader' }),
+            React.createElement('span', { className: 'player_loader', style: { opacity: loading ? 1 : 0 } }),
             React.createElement(
                 'div',
                 { className: 'display_content' },
                 React.createElement(
                     'div',
-                    { className: 'display_main' },
+                    { className: 'display_main', tabIndex: 0, onKeyDown: handleKeyDown, onBlur: () => displayRef.current.focus(), ref: displayRef },
                     React.createElement(PlayerButton, { togglePlayPause: togglePlayPause, isPlaying: isPlaying }),
                     React.createElement(PlayerProgress, { audioRef: audioRef, progressBarRef: progressBarRef, inputValue: inputValue, isVideo: isVideo,
                         onLoadedMetadata: onLoadedMetadata, setLoading: setLoading }),

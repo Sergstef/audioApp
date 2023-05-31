@@ -215,6 +215,7 @@ input[type="range"]:focus::-moz-range-thumb{
 }
 
 .display_main {
+    outline: none;
     width: 528px;
 }
 
