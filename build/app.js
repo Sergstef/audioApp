@@ -34259,6 +34259,10 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         setSpeedBlockOpened(prev => !prev);
     };
 
+    React.useEffect(() => {
+        console.log(volume);
+    }, [volume]);
+
     const handleKeyDown = event => {
         if (event.code === 'KeyQ') {
             togglePlayPause();
@@ -34277,12 +34281,22 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
 
         if (event.code === 'ArrowUp') {
             event.preventDefault();
-            setVolume(prev => prev + 3);
+
+            if (volume + 3 > 100) {
+                setVolume(100);
+            } else {
+                setVolume(prev => prev + 3);
+            }
         }
 
         if (event.code === 'ArrowDown') {
             event.preventDefault();
-            setVolume(prev => prev - 3);
+
+            if (volume - 3 < 0) {
+                setVolume(0);
+            } else {
+                setVolume(prev => prev - 3);
+            }
         }
     };
 

@@ -64,14 +64,13 @@
 
 .player_display {
     width: 620px;
-    height: 198px;
     background-color: #CFD3D6;
 }
 
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    background: #2b2d42;
+    background: #CFD3D6;
     cursor: pointer;
     width: 100%;
 }

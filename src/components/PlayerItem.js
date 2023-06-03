@@ -83,6 +83,10 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         setSpeedBlockOpened((prev) => !prev);
     };
 
+    React.useEffect(() => {
+        console.log(volume)
+    }, [volume])
+
     const handleKeyDown = event => {
         if (event.code === 'KeyQ') {
             togglePlayPause();
@@ -100,13 +104,23 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
         }
 
         if (event.code === 'ArrowUp') {
-            event.preventDefault()
-            setVolume(prev => prev + 3);
+            event.preventDefault();
+
+            if (volume + 3 > 100) {
+                setVolume(100);
+            } else {
+                setVolume(prev => prev + 3);
+            }
         }
 
         if (event.code === 'ArrowDown') {
             event.preventDefault()
-            setVolume(prev => prev - 3);
+
+            if (volume - 3 < 0) {
+                setVolume(0);
+            } else {
+                setVolume(prev => prev - 3);
+            }
         }
     };
 
@@ -126,7 +140,7 @@ const PlayerItem = ({ inputValue, setIsSubmitted, isVideo }) => {
                 <div className='display_extra'>
                     <div className='extra_dots' onClick={toggleSpeedBlock}>
                         {speedBlockOpened && <div className='extra_speed'>
-                            {speedArr.map(el => <div style={{ color: selectedSpeed === el ? 'black' : '#A4A3A4' }}
+                            {speedArr.map((el, i) => <div key={i} style={{ color: selectedSpeed === el ? 'black' : '#A4A3A4' }}
                                  className='speed_item' onClick={() => setSelectedSpeed(el)}>
                                     <span>{el}</span>
                             </div>)}
